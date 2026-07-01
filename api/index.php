@@ -12,7 +12,7 @@
             'ok'  => false,
             'php' => PHP_VERSION,
             'sapi'=> php_sapi_name(),
-            "database" => "Conectado com sucesso!";
+            "database" => "Conectado com sucesso!"
         ]);
         // $stmt = $pdo->prepare('SELECT * FROM "USUARIO"');
         // $stmt->execute();
@@ -28,6 +28,6 @@
             'ok'  => false,
             'php' => PHP_VERSION,
             'sapi'=> php_sapi_name(),
-            "database" => $e->getMessage();
+            "database" => $e->getMessage()
         ]);
     }
