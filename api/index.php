@@ -8,17 +8,15 @@
     try {
         $dsn = "pgsql:host=$host;port=5432;dbname=$dbname;sslmode=require;options='endpoint=ep-green-night-acel3qx9'";
         $pdo = new PDO($dsn, $user, $password);
+        $stmt = $pdo->prepare('SELECT * FROM "USUARIO"');
+        $stmt->execute();
+        // $stmt = $pdo->prepare('SELECT * FROM "USUARIO" WHERE nome = :nome');
+        // $stmt->execute(['nome' => 'Rocha']);
+        $resultado = $stmt->fetchAll();
         echo json_encode([
-            'ok'  => false,
-            'php' => PHP_VERSION,
-            'sapi'=> php_sapi_name(),
-            "database" => "Conectado com sucesso!"
+            "dados"=>$resultado
         ]);
-        // $stmt = $pdo->prepare('SELECT * FROM "USUARIO"');
-        // $stmt->execute();
-        // // $stmt = $pdo->prepare('SELECT * FROM "USUARIO" WHERE nome = :nome');
-        // // $stmt->execute(['nome' => 'Rocha']);
-        // $resultado = $stmt->fetchAll();
+
         // foreach($resultado as $result => $user){
         //     echo $user["id"]. $user['nome'] .$user['senha']."<br>";
         //     // echo var_dump($user) . "<br>";
